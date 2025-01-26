@@ -41,7 +41,7 @@ const Cards = () => {
         <div className='hidden lg:flex items-center bg-slate-100 rounded-md px-3 py-2'>
           <input type ="text-white bg-custome-purple"
           placeholder='Your@email.com'className='bg-gray-100 outline-none text-sm'/>
-      <button className='bg-white h-10 w-32 rounded-sm mt-1 text-custome-purple'> Sign Up</button>
+      <button className='bg-white h-12 w-32 rounded-sm mt-1 text-custome-purple'> Sign Up</button>
      </div>  
       </div>
       </div>

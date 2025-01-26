@@ -54,7 +54,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { allProducts } from "@/sanity/lib/queries";
+import { allProducts, four } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client"; // Assuming this is the client initialization
 import { product as ProductType } from "../../../scripts/types/products"; // Avoid naming conflicts
 import { urlFor } from "@/sanity/lib/image";
@@ -72,24 +72,26 @@ const PopularProducts = () => {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto px-8 py-12">
+    <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6 text-center">Our Latest Products</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"></div>
       {products.map((product) => (
-        <div key={product._id} className="border rounded-lg shadow-md p-2 hover:shadow-lg transition duration-200">
+        <div key={product._id} className="border rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200">
             <Link href={`/product/${product.slug.current}`}>  
            {/* <Link href ={'/Components/product/${product.slug.current}'}> */}
-            <h1>{product.productName}</h1>
+            {/* <h1>{product.productName}</h1> */}
             {product.image && (
               <Image
                 src={urlFor(product.image).url()} // Assuming `urlFor` is imported and properly configured
                 alt={product.productName}
-                width={300}
-                height={300}
-                className="w-full h-48 object-cover rounded-md"
+                width={600}
+                height={600}
+                 className="w-full h-48 object-cover rounded-md"
+                // className=""
               />
             )}
             <h2 className="text-lg font-semibold mt-4">{product.productName}</h2>
+            <br/>
             <p className="text-gray-500 mt-2">
               {product.price ? `$${product.price}` : "Price not available"}</p>
               <p className="text-gray-500 mt-2">
@@ -97,7 +99,7 @@ const PopularProducts = () => {
             </p>
             
             {/* <h1>{product.productName}</h1> */}
-            <p>{product.description}</p>
+            {/* <p>{product.description}</p> */}
           </Link>
         </div>
       ))}
